@@ -1,0 +1,21 @@
+﻿@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error Page";
+}
+
+<br />
+<br />
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+    <div>
+       @ViewBag.ErrorTitle 
+    </div>
+</div>
+
+@* 
+@if (Model.ShowRequestId)
+{
+    <p>
+        <strong>Request ID:</strong> <code>@Model.RequestId</code>
+    </p>
+} *@
+

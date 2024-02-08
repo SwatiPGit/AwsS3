@@ -1,0 +1,54 @@
+﻿@model IEnumerable<ConsumeAwsS3Api.Models.AwsS3FileDetailsViewModel>
+
+@{
+    ViewData["Title"] = "GetAwsS3AllFiles";
+}
+
+<br />
+<h3>Amazon S3 Files</h3>
+<br />
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col" class="table-light">
+                @Html.DisplayNameFor(model => model.BucketName)
+            </th>
+            <th scope="col" class="table-light">
+                @Html.DisplayNameFor(model => model.FolderName)
+            </th>
+            <th scope="col" class="table-light">
+                @Html.DisplayNameFor(model => model.FileName)
+            </th>
+            <th scope="col" class="table-light">
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th scope="col" class="table-light"></th>
+            <th scope="col" class="table-light"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr class="table-light">
+            <td>
+               @Html.DisplayFor(modelItem => item.BucketName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FolderName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                    @Html.ActionLink("Crop", "DownloadAwsS3AllFile", new { key=item.Key, size =item.Size, fileName =item.FileName})
+            </td>
+            <td>
+                    @Html.ActionLink("Resize", "ResizeAwsS3AllFile", new { key=item.Key, fileName =item.FileName})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
